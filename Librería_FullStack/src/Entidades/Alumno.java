@@ -5,6 +5,9 @@
 package Entidades;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
 
 /**
  *
@@ -13,6 +16,9 @@ import java.util.ArrayList;
 public class Alumno {
     // Atributos
     private String nombre;
+    private String apellido;
+    private String nacionalidad;
+    private Date fechaNacimiento;
     private ArrayList<Integer> notas; 
     
     // Constructores
@@ -24,6 +30,22 @@ public class Alumno {
         this.nombre = nombre;
         this.notas = notas;
     }
+
+    public Alumno(String nombre, String apellido, Date fechaNacimiento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    //Getter
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+    
+    
+    
     
     // Métodos
 

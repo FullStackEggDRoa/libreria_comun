@@ -20,6 +20,7 @@ public class Alumno {
     private String nacionalidad;
     private Date fechaNacimiento;
     private ArrayList<Integer> notas; 
+    public static final String[] nacionalidades = {"ARGENTINA","CHILENA","VENEZOLANA"};
     
     // Constructores
 
@@ -33,8 +34,7 @@ public class Alumno {
 
     public Alumno(String nombre, String apellido, Date fechaNacimiento) {
         this.nombre = nombre;
-        this.apellido = apellido;
-        
+        this.apellido = apellido;    
         this.fechaNacimiento = fechaNacimiento;
     }
 

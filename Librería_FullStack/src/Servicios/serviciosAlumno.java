@@ -6,6 +6,7 @@ package Servicios;
 
 import Entidades.Alumno;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -52,8 +53,10 @@ public class serviciosAlumno {
         boolean respuesta=false;
         String nombre;
         String apellido;
-        String nacionalidad={};
-        
+        String nacionalidades="";
+        for(String aux : Alumno.nacionalidades){
+            nacionalidades+=aux + " | ";
+        }
         
         System.out.println("..::Alta Alumnos::.. ");
         
@@ -63,13 +66,49 @@ public class serviciosAlumno {
             System.out.print("Ingrese Apellido: ");
             apellido = leer.next();
             
-            System.out.print("Ingrese Nacionalidad ["+nacionalidad+"]");
+            System.out.print("Ingrese Nacionalidad ["+nacionalidades+"]");
             apellido = leer.next(); 
             
-            System.out.print("Desea Ingresar otro Alumno? [Si | No]: ");
+            System.out.print("Ingrese Fecha de Nacimiento: ");
+            Date fechaNacimiento=new Date();
+            
+            
+            System.out.print("Desea dar de Alta otro Alumno? [Si | No]: ");
             respuesta = leer.next().equalsIgnoreCase("Si");
         
-            al.add(new Alumno(nombre,notas));
+            al.add(new Alumno(nombre,apellido,fechaNacimiento));
+       
+        }while(respuesta);
+    }
+    
+    public void bajaAlumno(ArrayList<Alumno> al){
+        boolean respuesta=false;
+        String nombre;
+        String apellido;
+        String nacionalidades="";
+        for(String aux : Alumno.nacionalidades){
+            nacionalidades+=aux + " | ";
+        }
+        
+        System.out.println("..::Alta Alumnos::.. ");
+        
+        do{
+            System.out.print("Ingrese Nombre: ");
+            nombre = leer.next();
+            System.out.print("Ingrese Apellido: ");
+            apellido = leer.next();
+            
+            System.out.print("Ingrese Nacionalidad ["+nacionalidades+"]");
+            apellido = leer.next(); 
+            
+            System.out.print("Ingrese Fecha de Nacimiento: ");
+            Date fechaNacimiento=new Date();
+            
+            
+            System.out.print("Desea dar de Alta otro Alumno? [Si | No]: ");
+            respuesta = leer.next().equalsIgnoreCase("Si");
+        
+            al.add(new Alumno(nombre,apellido,fechaNacimiento));
        
         }while(respuesta);
     }

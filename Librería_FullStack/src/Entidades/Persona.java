@@ -9,19 +9,36 @@ package Entidades;
  * @author droa
  */
 public class Persona {
+    //Atributos
     private String nombre;
     private String apellido;
+    private int edad;
     private Dni dni;
+    private Perro perro;
+    
+    //Constructores
 
     public Persona() {
     }
+    
     public Persona(String nombre, String apellido, Dni dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        
     }
-
     
+    
+
+    public Persona(String nombre, String apellido, int edad, Dni dni, Perro perro) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.dni = dni;
+        this.perro = perro;
+    }
+    
+    //Métodos
     
     public String getNombre() {
         return nombre;
@@ -47,11 +64,26 @@ public class Persona {
         this.dni = dni;
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public Perro getPerro() {
+        return perro;
+    }
+
+    public void setPerro(Perro perro) {
+        this.perro = perro;
+    }
+
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + '}';
+        return "Persona{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", dni=" + dni + ", perro=" + perro + '}';
     }
-    
-    
-    
+
+   
 }

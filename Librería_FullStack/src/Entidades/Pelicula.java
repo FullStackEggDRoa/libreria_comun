@@ -14,6 +14,7 @@ public class Pelicula {
     private String titulo;
     private String director;
     private float duracionHoras;
+    private int edadMinima;
     
     // Constructores
 
@@ -26,6 +27,15 @@ public class Pelicula {
         this.duracionHoras = duracionHoras;
         
     }
+
+    public Pelicula(String titulo, String director, float duracionHoras, int edadMinima) {
+        this.titulo = titulo;
+        this.director = director;
+        this.duracionHoras = duracionHoras;
+        this.edadMinima = edadMinima;
+    }
+    
+    
     
     // Métodos
 
@@ -53,6 +63,11 @@ public class Pelicula {
         this.duracionHoras = duracionHoras;
     }
 
+    public int getEdadMinima() {
+        return edadMinima;
+    }
+
+    
     @Override
     
     public String toString() {

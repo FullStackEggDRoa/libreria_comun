@@ -26,13 +26,13 @@ public class SalaCine {
     public SalaCine(int filas, int columnas,Pelicula pelicula,ArrayList<Espectador> espectadores) {
         this.filas = filas;
         this.columnas = columnas;
+        this.pelicula = pelicula;
         this.espectadores = espectadores;
         for(int i=0;i<filas;i++){
             for(int j=0;j<columnas;j++){
                 asientos.put(Integer.toString(i+1)+letraColumna[j], false);
             }
         }
-        
         
     }
     
@@ -73,7 +73,7 @@ public class SalaCine {
     }
     public boolean validarAsiento(int i,int j){
         boolean respuesta;
-        ;
+        
         if(asientos.get(Integer.toString(i+1)+letraColumna[j]).booleanValue()){
             respuesta=false;
         }else{

@@ -49,7 +49,24 @@ public class Cine {
             }
         }
     }
-    
+    public void importarEspectadores(){
+        int randomi=(int) (Math.random()*(sala.getFilas()-1));
+        int randomj=(int) (Math.random()*(sala.getColumnas()-1));
+        
+        if(!sala.getEspectadores().isEmpty()){
+            for(Espectador aux : sala.getEspectadores()){
+                if(sala.validarAsiento(randomi,randomj)){
+                    if(aux.getEdad() > sala.getPelicula().getEdadMinima() && aux.getDinero() > precio){
+                        aux.setAsiento(Integer.toString(randomi+1)+sala.getLetraColumna()[randomj]);
+                        sala.getAsientos().put((Integer.toString(randomi+1)+sala.getLetraColumna()[randomj]),true);
+                        System.out.println("Espectador Importado con Exito...");
+                    }
+                }
+                
+            }
+        }
+        
+    }
     
     @Override
     public String toString() {

@@ -4,6 +4,8 @@
  */
 package Entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author droa
@@ -14,6 +16,7 @@ public class Espectador {
     private int edad;
     private float dinero;
     private CharSequence asiento;
+    Scanner leer = new Scanner(System.in).useDelimiter("\n");
     
     //Constructores
 
@@ -42,6 +45,11 @@ public class Espectador {
         this.asiento = asiento;
     }
     
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\t"+"Edad: " + String.format("%2d", edad) + "\t"+ "Saldo: " + String.format("%.2f", dinero) + "\t"+ "Asiento: " + asiento + "\n";
+    }
     
     
 }

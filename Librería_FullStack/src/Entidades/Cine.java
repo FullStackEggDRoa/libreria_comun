@@ -5,7 +5,7 @@
 package Entidades;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  *
@@ -16,6 +16,7 @@ public class Cine {
     private ArrayList <Pelicula> peliculas;
     private SalaCine sala;
     private float precio;
+    Scanner leer = new Scanner(System.in).useDelimiter("\n");
     
     //Constructores
 
@@ -50,12 +51,13 @@ public class Cine {
         }
     }
     public void importarEspectadores(){
-        int randomi=(int) (Math.random()*(sala.getFilas()-1));
-        int randomj=(int) (Math.random()*(sala.getColumnas()-1));
+        
         
         if(!sala.getEspectadores().isEmpty()){
             for(Espectador aux : sala.getEspectadores()){
-                if(sala.validarAsiento(randomi,randomj)){
+                int randomi=(int) (Math.random()*(sala.getFilas()));
+                int randomj=(int) (Math.random()*(sala.getColumnas()));
+                if(sala.validarAsiento(randomi,randomj) && aux.getAsiento()==""){
                     if(aux.getEdad() > sala.getPelicula().getEdadMinima() && aux.getDinero() > precio){
                         aux.setAsiento(Integer.toString(randomi+1)+sala.getLetraColumna()[randomj]);
                         sala.getAsientos().put((Integer.toString(randomi+1)+sala.getLetraColumna()[randomj]),true);
@@ -67,6 +69,19 @@ public class Cine {
         }
         
     }
+    public void ingresarPelicula(){
+        System.out.print("Ingrese el Nombre de la Película: ");
+        String nombre=leer.next();
+        System.out.print("Ingrese el Nombre de Director: ");
+        String director=leer.next();
+        System.out.print("Ingrese la Duración: ");
+        float duracion=leer.nextFloat();    
+        System.out.print("Ingrese la Edad Mínima Permitida: ");
+        int edad=leer.nextInt();
+        
+        peliculas.add(new Pelicula(nombre, director, duracion, edad));
+    }
+    
     
     @Override
     public String toString() {

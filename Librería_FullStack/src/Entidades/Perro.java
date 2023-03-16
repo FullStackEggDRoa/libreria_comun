@@ -4,32 +4,34 @@
  */
 package Entidades;
 
+import Interfaces.accionesAnimal;
+
 /**
  *
  * @author droa
  */
-public class Perro {
+public class Perro extends Animal {
     
     //Atributos
     private String nombre;
     private String raza;
     private int edad;
     private String tamanio;
+    private int energia;
     
     //Constructores
 
     public Perro() {
     }
     
-    
-
-    public Perro(String nombre, String raza, int edad, String tamanio) {
+    public Perro(String nombre, String alimento, int edad,  String razaAnimal) {
+        super(alimento,razaAnimal);
         this.nombre = nombre;
-        this.raza = raza;
         this.edad = edad;
-        this.tamanio = tamanio;
+        
     }
-    
+
+   
     //Métodos
 
     public String getNombre() {
@@ -66,9 +68,23 @@ public class Perro {
 
     @Override
     public String toString() {
-        return "Perro{" + "nombre=" + nombre + ", raza=" + raza + ", edad=" + edad + ", tamanio=" + tamanio + '}';
+        //return "Perro{" + "nombre=" + nombre + ", raza=" + raza + ", edad=" + edad + ", tamanio=" + tamanio + '}' +"\n";
+        return String.format("%10.15s",nombre) + "\t" + String.format("%10.15s",raza) + "\t" + edad + " Años\t" + tamanio +"\n";
     }
     
+    public void hacerRuido(){
+        System.out.println("Wau!!");
+    }
     
+    @Override
+    public Animal procrear() {
+        
+        return new Perro();
+    }
+    
+    @Override
+    public void Alimentarse() {
+       System.out.println("El Perro "+ nombre +" se alimenta de: "+alimento);
+    }
     
 }

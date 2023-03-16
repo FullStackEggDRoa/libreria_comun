@@ -82,7 +82,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", dni=" + dni + ", perro=" + perro + '}';
+        return String.format("%10.15s",nombre)+ "\t" + String.format("%10.15s",apellido) + "\t" + edad + "\t" + dni + perro + "\n";
     }
 
    

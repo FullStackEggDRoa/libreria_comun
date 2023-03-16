@@ -40,7 +40,8 @@ public class Dni {
 
     @Override
     public String toString() {
-        return "Dni{" + "serie=" + serie + ", numero=" + numero + '}';
+        //return "Dni{" + "serie=" + serie + ", numero=" + numero + '}';
+        return numero +"\t";
     }
     
     

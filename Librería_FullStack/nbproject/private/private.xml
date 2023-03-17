@@ -10,12 +10,13 @@
         </group>
         <group name="EGG FullStack_Guía_9"/>
         <group name="EGG FullStack_Guía_10">
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Servicios/serviciosTelevisor.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Servicios/serviciosElectrodomestico.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Electrodomestico.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Televisor.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Servicios/serviciosLavadora.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Lavadora.java</file>
+            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Velero.java</file>
+            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Yate.java</file>
+            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Embarcacion.java</file>
+            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Puerto.java</file>
+            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Interfaces/calculosEmbarcaciones.java</file>
+            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Barco.java</file>
+            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Amarre.java</file>
         </group>
     </open-files>
 </project-private>

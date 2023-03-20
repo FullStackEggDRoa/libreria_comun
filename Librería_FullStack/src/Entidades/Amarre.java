@@ -18,6 +18,20 @@ public class Amarre {
     private Date fechaDevolucion;
     private int posicion;
     private Embarcacion embarcacion;
+
+    public Amarre() {
+    }
+
+    public Amarre(String nombre, Dni documento, Date fechaAlquiler, Date fechaDevolucion, int posicion, Embarcacion embarcacion) {
+        this.nombre = nombre;
+        this.documento = documento;
+        this.fechaAlquiler = fechaAlquiler;
+        this.fechaDevolucion = fechaDevolucion;
+        this.posicion = posicion;
+        this.embarcacion = embarcacion;
+    }
+    
+    
     
     //Métodos
 

@@ -17,6 +17,16 @@ public class Velero extends Embarcacion{
     
     //Constructores
 
+    public Velero() {
+    }
+
+    public Velero(int numeroMastiles, String matricula, float eslora, int anio) {
+        super(matricula, eslora, anio);
+        this.numeroMastiles = numeroMastiles;
+    }
+    
+    
+    
     public int getNumeroMastiles() {
         return numeroMastiles;
     }

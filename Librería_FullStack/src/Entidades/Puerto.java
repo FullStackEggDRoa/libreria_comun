@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class Puerto {
     
     //Atributos
+    private String nombre;
     private ArrayList<Amarre> alquileres=new ArrayList<>();
     private float precioParcial;
     

@@ -31,8 +31,6 @@ public class Amarre {
         this.embarcacion = embarcacion;
     }
     
-    
-    
     //Métodos
 
     public String getNombre() {

@@ -5,8 +5,11 @@
 package Servicios;
 
 import Entidades.Amarre;
+import Entidades.Barco;
 import Entidades.Dni;
 import Entidades.Embarcacion;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -22,7 +25,7 @@ public class serviciosAmarre {
     
     Scanner leer = new Scanner(System.in).useDelimiter("\n");
   
-    public Amarre alquilerAmarre (ArrayList<Amarre> alquileres){
+    public Amarre alquilerAmarre (ArrayList<Amarre> alquileres) throws ParseException{
         
         boolean matriculaOk=false;
         boolean identificacionOk=false;
@@ -33,8 +36,9 @@ public class serviciosAmarre {
         Date fechaAlquiler = new Date(System.currentTimeMillis());
         Date fechaDevolucion = new Date();
         int numeroPuerto=0;
-        Embarcacion embarcacion;
+        Embarcacion embarcacion=new Barco();
         Dni identificacion= new Dni();
+        
         
         System.out.println("..::Alquiler Amarre ::..");
         System.out.print("Ingrese Matricula Embarcación: ");
@@ -48,6 +52,7 @@ public class serviciosAmarre {
                                
                 matriculaOk=true;    
             }else{
+                embarcacion=sE.crearEmbarcacion();
                 matriculaOk=false;
             }    
         }
@@ -55,6 +60,7 @@ public class serviciosAmarre {
             if(aux.getDocumento().getNumero().equals(documentoString)){
                 System.out.print("Ingrese Fecha de Devolución [DD-MM-AAAA]: ");
                 fechaDevolucionString = leer.next();
+                identificacion=aux.getDocumento();
                 identificacionOk=true;
                     
            }else{
@@ -63,17 +69,18 @@ public class serviciosAmarre {
         }
         
         if(matriculaOk && identificacionOk){
-            DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate fechaDevolucionAux=LocalDate.parse(fechaDevolucionString, formato);
-            fechaDevolucion=Date.from(fechaDevolucionAux.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            System.out.print("Ingres el Número de Puerto: ");
+            
+//            DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//            LocalDate fechaDevolucionAux=LocalDate.parse(fechaDevolucionString, formato);
+//            
+            fechaDevolucion=new SimpleDateFormat("dd-MM-yyyy").parse(fechaDevolucionString);
+            System.out.print("Ingrese el Número de Puerto: ");
             numeroPuerto=leer.nextInt();
             
         }
         
         
-        
-        return new Amarre(matricula, documento, fechaAlquiler, fechaDevolucion, numeroPuerto, embarcacion);
+        return new Amarre(matricula,identificacion , fechaAlquiler, fechaDevolucion, numeroPuerto, embarcacion);
     }
     
     

@@ -38,6 +38,7 @@ public class serviciosAmarre {
         int numeroPuerto=0;
         Embarcacion embarcacion=new Barco();
         Dni identificacion= new Dni();
+        serviciosEmbarcacion sE = new serviciosEmbarcacion();
         
         
         System.out.println("..::Alquiler Amarre ::..");
@@ -54,7 +55,11 @@ public class serviciosAmarre {
             }else{
                 embarcacion=sE.crearEmbarcacion();
                 matriculaOk=false;
+                break;
             }    
+        }
+        if(matriculaOk=false){
+            
         }
         for(Amarre aux : alquileres){
             if(aux.getDocumento().getNumero().equals(documentoString)){
@@ -77,6 +82,8 @@ public class serviciosAmarre {
             System.out.print("Ingrese el Número de Puerto: ");
             numeroPuerto=leer.nextInt();
             
+        }else{
+        
         }
         
         

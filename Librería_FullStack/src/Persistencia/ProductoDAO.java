@@ -20,26 +20,6 @@ public final class ProductoDAO extends DAO {
         
     }
 
-    public ArrayList<Producto> listarNombreProductos() throws Exception {
-        try{
-            String querySql = "SELECT nombre FROM producto";
-            consultarDB(querySql);
-            Producto producto = null;
-            ArrayList<Producto> productos = new ArrayList<>();
-            while(resultado.next()){
-                producto=new Producto();
-                producto.setNombre(resultado.getString(1));
-                productos.add(producto);
-            
-            }
-            return productos;
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            desconectarDB();
-            throw e;
-        }
-    }
     public ArrayList<Producto> consultaProductos(String querySql) throws Exception {
         try{
             consultarDB(querySql);
@@ -51,14 +31,14 @@ public final class ProductoDAO extends DAO {
                 producto=new Producto();
                 for(int i=1;i<=columnasSql;i++){
                     switch (metaDataSql.getColumnName(i)) {
-                    case "codigo" -> producto.setCodigo(resultado.getInt(i));   
-                    case "nombre" -> producto.setNombre(resultado.getString(i));
-                    case "precio" -> producto.setPrecio(resultado.getDouble(i));
-                    case "codigo_fabricante" -> producto.setCodigoFabricante(resultado.getInt(i));
-                    default -> throw new AssertionError();
+                        case "codigo" -> producto.setCodigo(resultado.getInt(i));   
+                        case "nombre" -> producto.setNombre(resultado.getString(i));
+                        case "precio" -> producto.setPrecio(resultado.getDouble(i));
+                        case "codigo_fabricante" -> producto.setCodigoFabricante(resultado.getInt(i));
+                        default -> throw new AssertionError();
                     }
-                productos.add(producto);
                 }
+                productos.add(producto);
             }
             return productos;
         }

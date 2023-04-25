@@ -5,6 +5,7 @@
 package Persistencia;
 
 import Entidades.Fabricante;
+import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 
 /**
@@ -21,21 +22,31 @@ public final class FabricanteDAO extends DAO{
         super(database);
     }
     
-    public ArrayList<Fabricante> listarFabricante() throws Exception {
+    public ArrayList<Fabricante> consultaFabricantes(String querySql) throws Exception {
         try{
-            String querySql = "SELECT * FROM fabricante";
             consultarDB(querySql);
-            //Fabricante fabricantes = null;
-            ArrayList<Fabricante> fabricantes = new ArrayList<>();
-            
-            return fabricantes;
+            Fabricante fabricante = null;
+            ArrayList<Fabricante> productos = new ArrayList<>();
+            ResultSetMetaData metaDataSql = resultado.getMetaData();
+            int columnasSql = metaDataSql.getColumnCount();
+            while(resultado.next()){
+                fabricante=new Fabricante();
+                for(int i=1;i<=columnasSql;i++){
+                    switch (metaDataSql.getColumnName(i)) {
+                        case "codigo" -> fabricante.setCodigo(resultado.getInt(i));   
+                        case "nombre" -> fabricante.setNombre(resultado.getString(i));
+                        default -> throw new AssertionError();
+                    }
+                }
+                productos.add(fabricante);
+            }
+            return productos;
         }
         catch(Exception e){
             e.printStackTrace();
             desconectarDB();
             throw e;
         }
-        
     }
     
 }

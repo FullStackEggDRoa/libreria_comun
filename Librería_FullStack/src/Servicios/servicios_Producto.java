@@ -4,6 +4,7 @@
  */
 package Servicios;
 
+import Entidades.Fabricante;
 import Entidades.Producto;
 import Persistencia.ProductoDAO;
 import java.util.ArrayList;
@@ -80,13 +81,35 @@ public class servicios_Producto {
     }
     public void ingresarProducto() throws Exception {
         Producto producto = new Producto();
+        Fabricante fabricante = new Fabricante();
+        servicios_Fabricante sF = new servicios_Fabricante();
+        int contadorFabricante = 1;
+        
         System.out.println("..:: Ingreso de Producto ::..");
         System.out.print("Ingrese Nombre de Producto: ");
         producto.setNombre(leer.next());
         System.out.print("Ingrese Precio: ");
         producto.setPrecio(leer.nextDouble());
+        do{
+            String comanda = "Ingrese Fabricante [";
+            for(Fabricante aux : sF.listarNombreFabricantes()){
+                comanda+=contadorFabricante+". "+aux.getNombre()+" | ";
+                contadorFabricante++;
+            }
+
+            System.out.print(comanda+" "+contadorFabricante+". Ingresar Nuevo Fabricante]: ");
+            int seleccion = leer.nextInt();
+            if(seleccion < contadorFabricante){
+                producto.setCodigoFabricante(leer.nextInt());
+                contadorFabricante=0;
+            }else{
+                sF.ingresarFabricante();
+                contadorFabricante=1;
+            }
+            
+        }while(contadorFabricante!=0);
         
-        System.out.println("Ingrese Fabricante [Elija Opción]: ");
         
     }
+ 
 }

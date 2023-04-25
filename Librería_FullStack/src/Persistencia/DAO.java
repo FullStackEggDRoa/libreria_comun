@@ -78,4 +78,26 @@ public abstract class DAO {
         }
     }
     
+    // Ingresar, Modificar y Eliminar
+    
+    protected void insertarModificarEliminarDB(String querySql) throws Exception {
+        try {
+            conectarDB();
+            sentencia = conexion.createStatement();
+            sentencia.executeUpdate(querySql);
+        } catch (Exception ex) {
+            // conexion.rollback();
+            /*  Descomentar la linea anterior si desean tener en cuenta el rollback.
+                Correr el siguiente script en Workbench
+            
+                SET autocommit=1;
+                COMMIT;
+            
+                **Sin rollback igual anda */
+            throw ex;
+        } finally {
+            desconectarDB();
+        }
+    }
+    
 }

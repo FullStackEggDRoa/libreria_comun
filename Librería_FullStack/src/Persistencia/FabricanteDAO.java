@@ -49,4 +49,15 @@ public final class FabricanteDAO extends DAO{
         }
     }
     
+    public void ingresarFabricante(String querySql) throws Exception {
+        try{
+            insertarModificarEliminarDB(querySql);            
+        }
+        catch(Exception e){
+            throw e;
+        } finally {
+            desconectarDB();
+        }
+    }
+    
 }

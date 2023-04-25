@@ -20,14 +20,30 @@ public class servicios_Fabricante {
 
     public servicios_Fabricante() {
         this.dao = new FabricanteDAO("tienda");
-    }
+    }  
     
     public ArrayList<Fabricante> listarNombreFabricantes() throws Exception {
-
         try {
             ArrayList<Fabricante> nombreProductos = new ArrayList<>();
             String querySql = "SELECT nombre FROM fabricante";
             return dao.consultaFabricantes(querySql);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    public void ingresarFabricante() throws Exception{
+        try{
+            Fabricante fabricante = new Fabricante();
+
+            System.out.println("..:: Ingreso de Fabricante ::..");
+            System.out.print("Ingrese Nombre de Fabricante: ");
+            fabricante.setNombre(leer.next());
+            
+            if(fabricante == null){
+                throw new Exception("No se ha especificado la información de Fabricante.");
+            }
+            String querySql = "INSERT INTO fabricante (nombre) VALUES ('"+fabricante.getNombre()+"')";
+            dao.ingresarFabricante(querySql);
         } catch (Exception e) {
             throw e;
         }

@@ -20,40 +20,38 @@ public class servicios_Producto {
         this.dao = new ProductoDAO("tienda");
     }
     
-    public ArrayList<String> listarNombreProductos() throws Exception {
+    public ArrayList<Producto> listarNombreProductos() throws Exception {
 
         try {
-            ArrayList<String> nombreProductos = new ArrayList<>();
-            String querySql = "SELECT * FROM producto";
-            for(Producto aux : dao.consultaProductos(querySql)){
-                nombreProductos.add(aux.getNombre());
-            }
-
-            return nombreProductos;
+            ArrayList<Producto> nombreProductos = new ArrayList<>();
+            String querySql = "SELECT nombre FROM producto";
+            return dao.consultaProductos(querySql);
         } catch (Exception e) {
             throw e;
         }
     }
     
-    public ArrayList<String []> listarNombrePreciosProductos() throws Exception {
+    public ArrayList<Producto> listarNombrePreciosProductos() throws Exception {
 
         try {
-            ArrayList<String []> nombreProductos = new ArrayList<>();
-            String querySql = "SELECT * FROM producto";
-            for(Producto aux : dao.consultaProductos(querySql)){
-                String[] registro = new String[2];
-                registro[0]=aux.getNombre();
-                registro[1]=Double.toString(aux.getPrecio());
-                nombreProductos.add(registro);
-                
-            }
-
-            return nombreProductos;
+            ArrayList<Producto> nombreProductos = new ArrayList<>();
+            String querySql = "SELECT nombre,precio FROM producto";
+            return dao.consultaProductos(querySql);
         } catch (Exception e) {
             throw e;
         }
     }
     
-    
+    public ArrayList<Producto> listarNombreRango120_202() throws Exception {
+
+        try {
+            ArrayList<Producto> nombreProductos = new ArrayList<>();
+            String querySql = "SELECT * FROM producto WHERE precio > 120 AND precio < 202 ";
+            return dao.consultaProductos(querySql);
+
+        } catch (Exception e) {
+            throw e;
+        }
+    }
     
 }

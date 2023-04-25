@@ -67,7 +67,6 @@ public abstract class DAO {
     
     }
     
-    
     /// Consultas
     protected void consultarDB(String querySql) throws Exception {
         try {

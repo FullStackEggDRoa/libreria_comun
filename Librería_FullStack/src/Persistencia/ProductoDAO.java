@@ -6,7 +6,7 @@ package Persistencia;
 
 import Entidades.Producto;
 import java.util.ArrayList;
-
+import java.sql.ResultSetMetaData;
 /**
  *
  * @author droa
@@ -20,19 +20,19 @@ public final class ProductoDAO extends DAO {
         
     }
 
-    public ArrayList<String> listarNombreProductos() throws Exception {
+    public ArrayList<Producto> listarNombreProductos() throws Exception {
         try{
             String querySql = "SELECT nombre FROM producto";
             consultarDB(querySql);
-            String nombreProducto = null;
-            ArrayList<String> nombreProductos = new ArrayList<>();
+            Producto producto = null;
+            ArrayList<Producto> productos = new ArrayList<>();
             while(resultado.next()){
-                
-                nombreProducto=resultado.getString(1);
-                nombreProductos.add(nombreProducto);
+                producto=new Producto();
+                producto.setNombre(resultado.getString(1));
+                productos.add(producto);
             
             }
-            return nombreProductos;
+            return productos;
         }
         catch(Exception e){
             e.printStackTrace();
@@ -42,17 +42,23 @@ public final class ProductoDAO extends DAO {
     }
     public ArrayList<Producto> consultaProductos(String querySql) throws Exception {
         try{
-            //String querySql = "SELECT * FROM producto";
             consultarDB(querySql);
             Producto producto = null;
             ArrayList<Producto> productos = new ArrayList<>();
+            ResultSetMetaData metaDataSql = resultado.getMetaData();
+            int columnasSql = metaDataSql.getColumnCount();
             while(resultado.next()){
                 producto=new Producto();
-                producto.setCodigo(resultado.getInt(1));
-                producto.setNombre(resultado.getString(2));
-                producto.setPrecio(resultado.getDouble(3));
-                producto.setCodigoFabricante(resultado.getInt(4));
+                for(int i=1;i<=columnasSql;i++){
+                    switch (metaDataSql.getColumnName(i)) {
+                    case "codigo" -> producto.setCodigo(resultado.getInt(i));   
+                    case "nombre" -> producto.setNombre(resultado.getString(i));
+                    case "precio" -> producto.setPrecio(resultado.getDouble(i));
+                    case "codigo_fabricante" -> producto.setCodigoFabricante(resultado.getInt(i));
+                    default -> throw new AssertionError();
+                    }
                 productos.add(producto);
+                }
             }
             return productos;
         }

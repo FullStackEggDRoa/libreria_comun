@@ -60,5 +60,16 @@ public class Producto {
     public void setCodigoFabricante(int codigoFabricante) {
         this.codigoFabricante = codigoFabricante;
     }
+
+    @Override
+    public String toString() {
+        String formatoCodigo = codigo==0 ? "" : (codigo+"|");
+        String formatoNombre = nombre==null ? "" :(nombre+"|");
+        String formatoPrecio = precio==0 ? "" : (precio+"|");
+        String formatoCodigoFabricante = codigoFabricante==0 ? "" : (codigoFabricante+"|");
+        
+        return formatoCodigo + formatoNombre + formatoPrecio + formatoCodigoFabricante + "\n";
+    }
+    
     
 }

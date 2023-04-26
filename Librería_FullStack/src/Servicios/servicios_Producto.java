@@ -99,7 +99,7 @@ public class servicios_Producto {
             //Fabricante fabricante = new Fabricante();
             servicios_Fabricante sF = new servicios_Fabricante();
             int contadorFabricante = 1;
-            int codigoFabricante=0;
+            //int codigoFabricante=0;
 
             System.out.println("..:: Ingreso de Producto ::..");
             System.out.print("Ingrese Nombre de Producto: ");
@@ -141,6 +141,10 @@ public class servicios_Producto {
         try{
             ArrayList<Producto> nombreProductos = new ArrayList<>();
             servicios_Fabricante sF = new servicios_Fabricante();
+            int contadorFabricante = 1;
+            String nombreFabricante = "";
+            String querySql="";
+            
             System.out.print("Ingrese el Codigo de Producto: ");
             int codigoProducto = leer.nextInt();
             nombreProductos=dao.consultaProductos("SELECT * FROM producto WHERE codigo="+codigoProducto);
@@ -149,19 +153,35 @@ public class servicios_Producto {
                 auxProducto.setNombre(leer.next());
                 System.out.print("Editar Precio de Producto ["+auxProducto.getPrecio()+"] ENTER para Mantener: ");
                 auxProducto.setPrecio(leer.nextDouble());
-                for(Fabricante auxFabricante : sF.listarFabricantes()){
-                    if(auxFabricante.getCodigo()==auxProducto.getCodigo()){
-                        System.out.print("Editar Fabricante ["+auxFabricante.getNombre()+"] ENTER para Mantener: ");
+                do{
+                    String comanda = "Editar Fabricante [";
+                    for(Fabricante auxFabricante : sF.listarFabricantes()){
+
+                        comanda+=contadorFabricante+". "+auxFabricante.getNombre()+" | ";
+                        contadorFabricante++;
+                        if(auxFabricante.getCodigo()==auxProducto.getCodigo()){
+                           nombreFabricante = auxFabricante.getNombre();
+                        }
+                    }
+                    System.out.print(nombreFabricante+"] \n"+comanda+"\n "+contadorFabricante+". Ingresar Nuevo Fabricante] ENTER para Mantener: ");
+                    int seleccion = leer.nextInt();
+                    if(seleccion < contadorFabricante){
+                        auxProducto.setCodigoFabricante(seleccion);
+                        contadorFabricante=0;
+
+                    }else{
+                        sF.ingresarFabricante();
+                        contadorFabricante=1;
                     }
                     
-                }
-                
-                
+                }while(contadorFabricante!=0);
+                querySql = "UPDATE producto SET "
+                    + " nombre = '" + auxProducto.getNombre()+ "' , precio = '" + auxProducto.getPrecio()+ "' , codigo_fabricante = " + auxProducto.getCodigoFabricante()
+                    + " WHERE codigo = '" + codigoProducto+ "'";
             }
             
             
-            String querySql = "SELECT * FROM producto";
-            dao.consultaProductos(querySql);   
+            dao.modificarProducto(querySql); 
             
         }catch (Exception e) {
             throw e;

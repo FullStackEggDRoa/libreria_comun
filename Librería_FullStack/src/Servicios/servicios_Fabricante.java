@@ -30,7 +30,7 @@ public class servicios_Fabricante {
         } catch (Exception e) {
             throw e;
         }
-    
+    }
     
     public ArrayList<Fabricante> listarNombreFabricantes() throws Exception {
         try {

@@ -149,21 +149,21 @@ public class servicios_Producto {
             int codigoProducto = leer.nextInt();
             nombreProductos=dao.consultaProductos("SELECT * FROM producto WHERE codigo="+codigoProducto);
             for(Producto auxProducto : nombreProductos){
-                System.out.print("Editar Nombre de Producto ["+auxProducto.getNombre()+"] ENTER para Mantener: ");
+                System.out.print("Editar Nombre de Producto ["+auxProducto.getNombre()+"]: ");
                 auxProducto.setNombre(leer.next());
-                System.out.print("Editar Precio de Producto ["+auxProducto.getPrecio()+"] ENTER para Mantener: ");
+                System.out.print("Editar Precio de Producto ["+auxProducto.getPrecio()+"]: ");
                 auxProducto.setPrecio(leer.nextDouble());
                 do{
-                    String comanda = "Editar Fabricante [";
+                    String comanda = "[";
                     for(Fabricante auxFabricante : sF.listarFabricantes()){
 
                         comanda+=contadorFabricante+". "+auxFabricante.getNombre()+" | ";
                         contadorFabricante++;
-                        if(auxFabricante.getCodigo()==auxProducto.getCodigo()){
+                        if(auxFabricante.getCodigo()==auxProducto.getCodigoFabricante()){
                            nombreFabricante = auxFabricante.getNombre();
                         }
                     }
-                    System.out.print(nombreFabricante+"] \n"+comanda+"\n "+contadorFabricante+". Ingresar Nuevo Fabricante] ENTER para Mantener: ");
+                    System.out.print("Editar Fabricante ["+nombreFabricante+"]\n"+comanda+"]\n ["+contadorFabricante+". Ingresar Nuevo Fabricante]: ");
                     int seleccion = leer.nextInt();
                     if(seleccion < contadorFabricante){
                         auxProducto.setCodigoFabricante(seleccion);

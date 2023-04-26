@@ -48,4 +48,16 @@ public final class ProductoDAO extends DAO {
             throw e;
         }
     }
+    
+    public void ingresarProducto(String querySql) throws Exception {
+        try{
+            insertarModificarEliminarDB(querySql);            
+        }
+        catch(Exception e){
+            throw e;
+        } finally {
+            desconectarDB();
+        }
+    }
+    
 }

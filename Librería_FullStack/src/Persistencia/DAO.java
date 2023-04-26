@@ -52,13 +52,13 @@ public abstract class DAO {
     }
     protected void desconectarDB() throws Exception{
         try{
-            if(resultado == null){
+            if(resultado != null){
                 resultado.close();
             }
-            if(sentencia == null){
+            if(sentencia != null){
                 sentencia.close();
             }
-            if(conexion == null){
+            if(conexion != null){
                 conexion.close();
             }
         } catch (Exception ex){
@@ -85,7 +85,7 @@ public abstract class DAO {
             conectarDB();
             sentencia = conexion.createStatement();
             sentencia.executeUpdate(querySql);
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             // conexion.rollback();
             /*  Descomentar la linea anterior si desean tener en cuenta el rollback.
                 Correr el siguiente script en Workbench

@@ -22,6 +22,16 @@ public class servicios_Fabricante {
         this.dao = new FabricanteDAO("tienda");
     }  
     
+    public ArrayList<Fabricante> listarFabricantes() throws Exception {
+        try {
+            ArrayList<Fabricante> nombreProductos = new ArrayList<>();
+            String querySql = "SELECT * FROM fabricante";
+            return dao.consultaFabricantes(querySql);
+        } catch (Exception e) {
+            throw e;
+        }
+    
+    
     public ArrayList<Fabricante> listarNombreFabricantes() throws Exception {
         try {
             ArrayList<Fabricante> nombreProductos = new ArrayList<>();

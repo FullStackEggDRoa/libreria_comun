@@ -4,7 +4,7 @@
  */
 package Persistencia;
 
-import Entidades.Autor;
+import Entidades.Editorial;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
  *
  * @author droa
  */
-public class AutorDAO {
+public class EditorialDAO {
     //Atributos
     private final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("LibreriaDB_PU");
     private EntityManager em = EMF.createEntityManager();
@@ -31,19 +31,18 @@ public class AutorDAO {
         }
     }
     
-    public List<Autor> listarAutores(String queryPsql) throws Exception {
+    public List<Editorial> listarEditorial(String queryPsql) throws Exception {
         conectar();
-        List<Autor> autores = em.createQuery(queryPsql).getResultList();
+        List<Editorial> editoriales = em.createQuery(queryPsql).getResultList();
         desconectar();
-        return autores;
+        return editoriales;
     }
     
-    public void guardarAutor(Autor autor){
+    public void guardarEditorial(Editorial editorial){
         conectar();
         em.getTransaction().begin();
-        em.persist(autor);
+        em.persist(editorial);
         em.getTransaction().commit();
         desconectar();
     }
-    
 }

@@ -20,10 +20,12 @@ import javax.persistence.Table;
 public class Editorial {
     //Atributos
     @Id
+    @Column(name = "ideditorial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique=true)
+    @Column(name="nombre")
     private String nombre;
+    @Column(name= "alta")    
     private Boolean alta;
     
     //Constructor
@@ -63,6 +65,17 @@ public class Editorial {
 
     public void setAlta(Boolean alta) {
         this.alta = alta;
+    }
+
+    @Override
+    public String toString() {
+        
+        String formatoId = id==null ? "" : String.format("%6.6s",id.toString())+"|";
+        String formatoNombre = nombre==null ? "" :String.format("%31.31s",nombre)+"|";        
+        
+        return formatoId + formatoNombre + "\n";
+        
+        
     }
     
     

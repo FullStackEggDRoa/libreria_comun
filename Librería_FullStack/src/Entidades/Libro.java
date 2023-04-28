@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,19 +23,30 @@ public class Libro {
     
     //Atributos
     @Id
+    @Column(name = "idlibro")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true)
+    @Column(unique = true,name = "isbn")
     private Long isbn;
+    @Column(name = "titulo")
     private String titutlo;
+    @Column(name = "anio")
     private Integer anio;
+    @Column(name = "ejemplares")
     private Integer ejemplares;
+    @Column(name = "ejemplaresPrestados")
     private Integer ejemplaresPrestados;
+    @Column(name = "ejemplaresRestantes")
     private Integer ejemplaresRestantes;
+    @Column(name = "alta")
     private Boolean alta;
+    //@Column(name = "idautor")
     @OneToOne
+    @JoinColumn(name = "id_autor")
     private Autor autor;
+    //@Column(name = "ideditorial")
     @OneToOne
+    @JoinColumn(name = "id_editorial")
     private Editorial editorial;
     
     //Constructores
@@ -141,6 +153,8 @@ public class Libro {
 
     @Override
     public String toString() {
+        
+        
         return "Libro{" + "id=" + id + ", isbn=" + isbn + ", titutlo=" + titutlo + ", anio=" + anio + ", ejemplares=" + ejemplares + ", ejemplaresPrestados=" + ejemplaresPrestados + ", ejemplaresRestantes=" + ejemplaresRestantes + ", alta=" + alta + ", autor=" + autor + ", editorial=" + editorial + '}';
     }
     

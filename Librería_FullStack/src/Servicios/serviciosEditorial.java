@@ -6,6 +6,7 @@ package Servicios;
 
 import Entidades.Editorial;
 import Persistencia.EditorialDAO;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,11 +33,40 @@ public class serviciosEditorial {
         DAO.guardarEditorial(editorial);
     }
     
-    public List<Editorial> listarAutores(){
+    public Editorial buscarEditorial(){
+        List<Editorial> editoriales = new ArrayList<>();
+        int contadorResultados = 1;
+        int opcion=0;
+        String comanda = "";
+        
+        System.out.println(".:: BUSCAR EDITORIAL ::..");
+        System.out.print("Ingrese Criterio de Busqueda: ");
+        String criterio = leer.next();
+        
+        String queryJpql = "SELECT e FROM Editorial e WHERE e.nombre LIKE '%"+criterio+"%'";
+        
+        try{
+            editoriales=DAO.listarEditoriales(queryJpql);
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        
+        for(Editorial aux : editoriales) {
+                comanda+=contadorResultados+". "+aux.getNombre()+" ";
+                contadorResultados++;
+            }
+        
+        System.out.print("Elija una Opción: [ "+comanda+"]: ");
+        opcion=leer.nextInt();
+        return editoriales.get(opcion-1);
+    }
+    
+    public List<Editorial> listarEditoriales(){
     
         try {
             String queryPsql = "SELECT e FROM Editorial e";
-            return DAO.listarEditorial(queryPsql);
+            return DAO.listarEditoriales(queryPsql);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

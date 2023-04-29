@@ -40,7 +40,7 @@ public class serviciosLibro {
         libro.setIsbn(isbn);
         libro.setAnio(anio);
         libro.setAutor(sA.buscarAutor());
-        
+        libro.setEditorial(sE.buscarEditorial());
         DAO.guardarLibro(libro);
     }
     

@@ -45,7 +45,7 @@ public class serviciosAutor {
         System.out.print("Ingrese Criterio de Busqueda: ");
         String criterio = leer.next();
         
-        String queryJpql = "SELECT a FROM Autor a WHERE Autor.nombre LIKE :'%london%'";
+        String queryJpql = "SELECT a FROM Autor a WHERE a.nombre LIKE '%"+criterio+"%'";
         
         try{
             autores=DAO.listarAutores(queryJpql);

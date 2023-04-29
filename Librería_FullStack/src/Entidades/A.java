@@ -10,15 +10,15 @@ package Entidades;
  */
 public class A {
     public void metodoA(){
-        System.out.println("Sentencia_a1");
-        System.out.println("Sentencia_a2");
-        try{
-        }catch (MioException e){
-            System.out.println("sentencia_a6");
-        }
-        System.out.println("sentencia_a6");
-        }
-        System.out.println("sentencia_a5");--  
+//        System.out.println("Sentencia_a1");
+//        System.out.println("Sentencia_a2");
+//        try{
+//        }catch (MioException e){
+//            System.out.println("sentencia_a6");
+//        }
+//        System.out.println("sentencia_a6");
+//        }
+//        System.out.println("sentencia_a5");--  
     }
 }
 

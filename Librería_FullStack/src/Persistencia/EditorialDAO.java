@@ -31,7 +31,7 @@ public class EditorialDAO {
         }
     }
     
-    public List<Editorial> listarEditorial(String queryPsql) throws Exception {
+    public List<Editorial> listarEditoriales(String queryPsql) throws Exception {
         conectar();
         List<Editorial> editoriales = em.createQuery(queryPsql).getResultList();
         desconectar();

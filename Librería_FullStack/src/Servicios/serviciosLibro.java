@@ -36,7 +36,7 @@ public class serviciosLibro {
         System.out.print("Ingrese el Año: ");
         int anio = leer.nextInt();
         
-        libro.setTitutlo(nombreLibro);
+        libro.setTitulo(nombreLibro);
         libro.setIsbn(isbn);
         libro.setAnio(anio);
         libro.setAutor(sA.buscarAutor());

@@ -19,6 +19,7 @@ public class serviciosAutor {
     //Atributos
     
     Scanner leer = new Scanner(System.in).useDelimiter("\n");
+    serviciosAutor sA = new serviciosAutor();
     
     private final AutorDAO DAO;
 
@@ -53,14 +54,21 @@ public class serviciosAutor {
             e.printStackTrace();
             return null;
         }
-        
-        for(Autor aux : autores) {
-                comanda+=contadorResultados+". "+aux.getNombre()+" ";
-                contadorResultados++;
+        do{
+            for(Autor aux : autores) {
+                    comanda+=contadorResultados+". "+aux.getNombre()+" ";
+                    contadorResultados++;
+                }
+
+            System.out.print("Elija una Opción: [ "+comanda+contadorResultados+". Ingresar Nuevo Autor]: ");
+            opcion=leer.nextInt();
+            if(opcion < contadorResultados){
+                contadorResultados=0;
+            }else{
+                sA.crearAutor();
+                contadorResultados=1;
             }
-        
-        System.out.print("Elija una Opción: [ "+comanda+"]: ");
-        opcion=leer.nextInt();
+        }while(contadorResultados!=0);
         return autores.get(opcion-1);
     }
     

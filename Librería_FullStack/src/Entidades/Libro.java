@@ -29,7 +29,7 @@ public class Libro {
     @Column(unique = true,name = "isbn")
     private Long isbn;
     @Column(name = "titulo")
-    private String titutlo;
+    private String titulo;
     @Column(name = "anio")
     private Integer anio;
     @Column(name = "ejemplares")
@@ -58,7 +58,7 @@ public class Libro {
     public Libro(Integer id, Long isbn, String titutlo, Integer anio, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes, Boolean alta, Autor autor, Editorial editorial) {
         this.id = id;
         this.isbn = isbn;
-        this.titutlo = titutlo;
+        this.titulo = titutlo;
         this.anio = anio;
         this.ejemplares = ejemplares;
         this.ejemplaresPrestados = ejemplaresPrestados;
@@ -87,12 +87,12 @@ public class Libro {
         this.isbn = isbn;
     }
 
-    public String getTitutlo() {
-        return titutlo;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTitutlo(String titutlo) {
-        this.titutlo = titutlo;
+    public void setTitulo(String titutlo) {
+        this.titulo = titutlo;
     }
 
     public Integer getAnio() {
@@ -154,8 +154,14 @@ public class Libro {
     @Override
     public String toString() {
         
+        String formatoId = id==null ? "" : String.format("%6.6s",id.toString())+"|";
+        String formatoTitulo = titulo==null ? String.format("%31.31s","-")+"|" :String.format("%31.31s",titulo)+"|";
+        String formatoIsbn = isbn==null ? String.format("%31.31s","-")+"|" : String.format("%21.21s",isbn.toString())+"|";
+        String formatoAutor = autor==null ? String.format("%31.31s","-")+"|" : String.format("%31.31s",autor.getNombre())+"|";
+        String formatoEditorial = editorial==null ? String.format("%31.31s","-")+"|" : String.format("%31.31s", editorial.getNombre())+"|";
+        String formatoAnio = anio==null ? String.format("%5.5s","-")+"|" : String.format("%5.5s",anio.toString() )+"|";
+        return formatoId + formatoTitulo + formatoIsbn + formatoAutor + formatoEditorial + anio + "\n";
         
-        return "Libro{" + "id=" + id + ", isbn=" + isbn + ", titutlo=" + titutlo + ", anio=" + anio + ", ejemplares=" + ejemplares + ", ejemplaresPrestados=" + ejemplaresPrestados + ", ejemplaresRestantes=" + ejemplaresRestantes + ", alta=" + alta + ", autor=" + autor + ", editorial=" + editorial + '}';
     }
     
     

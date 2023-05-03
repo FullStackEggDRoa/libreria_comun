@@ -19,7 +19,7 @@ public class serviciosAutor {
     //Atributos
     
     Scanner leer = new Scanner(System.in).useDelimiter("\n");
-    serviciosAutor sA = new serviciosAutor();
+    //serviciosAutor sA = new serviciosAutor();
     
     private final AutorDAO DAO;
 
@@ -37,7 +37,8 @@ public class serviciosAutor {
     }
     
     public Autor buscarAutor(){
-        List<Autor> autores = new ArrayList<>();
+        List<Autor> autores;
+        autores = new ArrayList<>();
         int contadorResultados = 1;
         int opcion=0;
         String comanda = "";
@@ -48,13 +49,14 @@ public class serviciosAutor {
         
         String queryJpql = "SELECT a FROM Autor a WHERE a.nombre LIKE '%"+criterio+"%'";
         
-        try{
-            autores=DAO.listarAutores(queryJpql);
-        } catch (Exception e){
+        
+        do{
+            try{
+                autores=DAO.listarAutores(queryJpql);
+            } catch (Exception e){
             e.printStackTrace();
             return null;
         }
-        do{
             for(Autor aux : autores) {
                     comanda+=contadorResultados+". "+aux.getNombre()+" ";
                     contadorResultados++;
@@ -65,7 +67,7 @@ public class serviciosAutor {
             if(opcion < contadorResultados){
                 contadorResultados=0;
             }else{
-                sA.crearAutor();
+                crearAutor();
                 contadorResultados=1;
             }
         }while(contadorResultados!=0);

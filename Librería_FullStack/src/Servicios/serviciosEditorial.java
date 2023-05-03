@@ -45,20 +45,29 @@ public class serviciosEditorial {
         
         String queryJpql = "SELECT e FROM Editorial e WHERE e.nombre LIKE '%"+criterio+"%'";
         
-        try{
-            editoriales=DAO.listarEditoriales(queryJpql);
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-        
-        for(Editorial aux : editoriales) {
-                comanda+=contadorResultados+". "+aux.getNombre()+" ";
-                contadorResultados++;
+        do{
+            try{
+                editoriales=DAO.listarEditoriales(queryJpql);
+            } catch (Exception e){
+                e.printStackTrace();
+                return null;
             }
-        
-        System.out.print("Elija una Opción: [ "+comanda+"]: ");
-        opcion=leer.nextInt();
+
+            for(Editorial aux : editoriales) {
+                    comanda+=contadorResultados+". "+aux.getNombre()+" ";
+                    contadorResultados++;
+                }
+
+            System.out.print("Elija una Opción: [ "+comanda+contadorResultados+". Ingresar Nueva Editorial]: ");
+            opcion=leer.nextInt();
+            if(opcion < contadorResultados){
+                contadorResultados=0;
+            }else{
+                crearEditorial();
+                contadorResultados=1;
+            }
+            
+        }while(contadorResultados!=0);
         return editoriales.get(opcion-1);
     }
     

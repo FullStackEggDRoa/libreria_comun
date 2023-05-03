@@ -55,10 +55,10 @@ public class Libro {
         this.alta=true;
     }
 
-    public Libro(Integer id, Long isbn, String titutlo, Integer anio, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes, Boolean alta, Autor autor, Editorial editorial) {
+    public Libro(Integer id, Long isbn, String titulo, Integer anio, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes, Boolean alta, Autor autor, Editorial editorial) {
         this.id = id;
         this.isbn = isbn;
-        this.titulo = titutlo;
+        this.titulo = titulo;
         this.anio = anio;
         this.ejemplares = ejemplares;
         this.ejemplaresPrestados = ejemplaresPrestados;
@@ -91,8 +91,8 @@ public class Libro {
         return titulo;
     }
 
-    public void setTitulo(String titutlo) {
-        this.titulo = titutlo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public Integer getAnio() {
@@ -160,7 +160,7 @@ public class Libro {
         String formatoAutor = autor==null ? String.format("%31.31s","-")+"|" : String.format("%31.31s",autor.getNombre())+"|";
         String formatoEditorial = editorial==null ? String.format("%31.31s","-")+"|" : String.format("%31.31s", editorial.getNombre())+"|";
         String formatoAnio = anio==null ? String.format("%5.5s","-")+"|" : String.format("%5.5s",anio.toString() )+"|";
-        return formatoId + formatoTitulo + formatoIsbn + formatoAutor + formatoEditorial + anio + "\n";
+        return formatoId + formatoTitulo + formatoIsbn + formatoAutor + formatoEditorial + formatoAnio + "\n";
         
     }
     

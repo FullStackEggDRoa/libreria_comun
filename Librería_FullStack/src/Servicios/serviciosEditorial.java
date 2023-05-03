@@ -26,7 +26,7 @@ public class serviciosEditorial {
     
     public void crearEditorial(){
         Editorial editorial = new Editorial();
-        System.out.println(".:: INGRESO Editorial ::..");
+        System.out.println(".:: INGRESO EDITORIAL ::..");
         System.out.print("Ingrese Nombre de la Editorial: ");
         String nombreEditorial = leer.next();
         editorial.setNombre(nombreEditorial);

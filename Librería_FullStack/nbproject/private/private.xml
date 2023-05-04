@@ -12,7 +12,6 @@
         <group name="EGG FullStack_Guía_10"/>
         <group name="EGG FullStack_Guía_11"/>
         <group name="EGG FullStack_Guía_13">
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/META-INF/persistence.xml</file>
             <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Producto.java</file>
             <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Servicios/servicios_Producto.java</file>
             <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Persistencia/FabricanteDAO.java</file>
@@ -23,14 +22,9 @@
         </group>
         <group name="EGG FullStack_Guía_14">
             <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Persistencia/LibroDAO.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Persistencia/EditorialDAO.java</file>
             <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Servicios/serviciosEditorial.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Libro.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Autor.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Persistencia/AutorDAO.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Entidades/Editorial.java</file>
-            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Servicios/serviciosLibro.java</file>
             <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Servicios/serviciosAutor.java</file>
+            <file>file:/Volumes/Sensible_Data/Users/droa/Library/Mobile%20Documents/com~apple~CloudDocs/APG-ADM/Proyectos/EGG%20FullStack/Librería/Librería_FullStack/src/Servicios/serviciosLibro.java</file>
         </group>
     </open-files>
 </project-private>

@@ -164,5 +164,16 @@ public class Libro {
         
     }
     
+    public String toStringInventario() {
+        
+        String formatoId = id==null ? "" : String.format("%6.6s",id.toString())+"|";
+        String formatoIsbn = isbn==null ? String.format("%31.31s","-")+"|" : String.format("%21.21s",isbn.toString())+"|";
+        String formatoTitulo = titulo==null ? String.format("%31.31s","-")+"|" :String.format("%31.31s",titulo)+"|";
+        String formatoEjemplares = ejemplares==null ? String.format("%12.12s","-")+"|" : String.format("%12.12s",ejemplares.toString())+"|";
+        String formatoEjemplaresPrestados = ejemplaresPrestados==null ? String.format("%24.24s","-")+"|" : String.format("%24.24s", ejemplaresPrestados.toString())+"|";
+        String formatoEjemplaresRestantes = ejemplaresRestantes==null ? String.format("%22.22s","-")+"|" : String.format("%22.22s",anio.toString() )+"|";
+        return "|"+formatoId + formatoTitulo + formatoIsbn + formatoEjemplares + formatoEjemplaresPrestados + formatoEjemplaresRestantes;
+        
+    }
     
 }

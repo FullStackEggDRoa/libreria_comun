@@ -45,4 +45,11 @@ public class LibroDAO {
         em.getTransaction().commit();
         desconectar();
     }
+    public void editarLibro(Libro libro) {
+        conectar();
+        em.getTransaction().begin();
+        em.merge(libro);
+        em.getTransaction().commit();
+        desconectar();
+    }
 }

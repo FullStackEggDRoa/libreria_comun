@@ -103,13 +103,30 @@ public class serviciosLibro {
         }
     }
     
+    public List<Libro> listarLibrosInventarios(int id){
+        
+        try {
+            String queryPsql = "SELECT l FROM Libro l WHERE l.id = '"+id+"'";
+            return DAO.listarLibros(queryPsql);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+    }
+    
     public void editarLibro(){
+        
+        Libro libro = new Libro();
         System.out.println(".:: Editar Producto ::..");
         try{
             List<Libro> nombreLibros = new ArrayList<>();
 //            servicios_Fabricante sF = new servicios_Fabricante();
             int contadorAutor = 1;
+            int contadorEditorial = 1;
             String nombreAutor = "";
+            String nombreEditorial = "";
             String queryPsql="";
             
             System.out.print("Ingrese el Codigo de Libro: ");
@@ -126,17 +143,23 @@ public class serviciosLibro {
 
                         comanda+=contadorAutor+". "+auxAutor.getNombre()+" | ";
                         contadorAutor++;
-                        if(Objects.equals(auxAutor.getId(), auxLibro.getAutor().getId())){
-                           nombreAutor = auxAutor.getNombre();
-                        }else{
+                        try{
+                            if(Objects.equals(auxAutor.getId(), auxLibro.getAutor().getId())){
+                               nombreAutor = auxAutor.getNombre();
+                            }else{
+                                nombreAutor = "No Asignado";
+                            }
+                        }catch(Exception e){
                             nombreAutor = "No Asignado";
                         }
                     }
                     System.out.print("Editar Autor ["+nombreAutor+"]\n"+comanda+"]\n ["+contadorAutor+". Ingresar Nuevo Autor]: ");
                     int seleccion = leer.nextInt();
+                    
                     if(seleccion < contadorAutor){
-                        auxLibro.getAutor().setId(seleccion);
+                        auxLibro.setAutor(sA.listarAutores().get(seleccion-1));
                         contadorAutor=0;
+                        DAO.editarLibro(auxLibro);
 
                     }else{
                         sA.crearAutor();
@@ -144,13 +167,41 @@ public class serviciosLibro {
                     }
                     
                 }while(contadorAutor!=0);
-//                queryPsql = "UPDATE producto SET "
-//                    + " nombre = '" + auxProducto.getNombre()+ "' , precio = '" + auxProducto.getPrecio()+ "' , codigo_fabricante = " + auxProducto.getCodigoFabricante()
-//                    + " WHERE codigo = '" + codigoProducto+ "'";
+                
+                do{
+                    String comanda = "[";
+                    for(Editorial auxEditorial : sE.listarEditoriales()){
+
+                        comanda+=contadorEditorial+". "+auxEditorial.getNombre()+" | ";
+                        contadorEditorial++;
+                        try{
+                            if(Objects.equals(auxEditorial.getId(), auxLibro.getEditorial().getId())){
+                               nombreEditorial = auxEditorial.getNombre();
+                            }else{
+                                nombreEditorial = "No Asignado";
+                            }
+                        }catch(Exception e){
+                            nombreEditorial = "No Asignado";
+                        }
+                    }
+                    System.out.print("Editar Editorial ["+nombreEditorial+"]\n"+comanda+"]\n ["+contadorEditorial+". Ingresar Nueva Editorial]: ");
+                    int seleccion = leer.nextInt();
+                    
+                    if(seleccion < contadorEditorial){
+                        auxLibro.setEditorial(sE.listarEditoriales().get(seleccion-1));
+                        contadorEditorial=0;
+                        DAO.editarLibro(auxLibro);
+
+                    }else{
+                        sE.crearEditorial();
+                        contadorEditorial=1;
+                    }
+                    
+                }while(contadorEditorial!=0);
+                
+                
+
             }
-            
-            
-            //dao.modificarProducto(querySql); 
             
         }catch (Exception e) {
             e.printStackTrace();

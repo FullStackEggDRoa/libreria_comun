@@ -37,7 +37,7 @@ public class serviciosEditorial {
         } catch (Exception e) {
             //return null;
             System.out.println("Eureka!!!!!!!!!!!!!!!");
-            System.out.println("Editorial ya se encuentra Ingresada.");
+            System.out.println("NOTA: Editorial ya se encuentra Ingresada.");
         }
 
         

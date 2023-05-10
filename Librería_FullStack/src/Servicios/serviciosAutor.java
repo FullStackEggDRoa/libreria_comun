@@ -33,7 +33,12 @@ public class serviciosAutor {
         System.out.print("Ingrese Nombre del Autor: ");
         String nombreAutor = leer.next();
         autor.setNombre(nombreAutor);
-        DAO.guardarAutor(autor);
+        try {
+            DAO.guardarAutor(autor);
+        } catch (Exception e) {
+            System.out.println("NOTA: Autor ya se encuentra Ingresado.");
+        }
+        
     }
     
     public Autor buscarAutor(){

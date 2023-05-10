@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import javax.persistence.RollbackException;
 
 /**
  *
@@ -41,12 +42,19 @@ public class AutorDAO {
         return autores;
     }
     
-    public void guardarAutor(Autor autor){
-        conectar();
+    public void guardarAutor(Autor autor) throws Exception{
+        try {
+            conectar();
         em.getTransaction().begin();
         em.persist(autor);
         em.getTransaction().commit();
         desconectar();
+        } catch (RollbackException e) {
+            throw e;
+        } finally{
+            desconectar();
+        }
+        
     }
     
 }

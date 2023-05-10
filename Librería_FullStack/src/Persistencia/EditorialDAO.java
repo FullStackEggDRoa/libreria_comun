@@ -48,8 +48,7 @@ public class EditorialDAO{
             em.getTransaction().commit();
             
         }catch (RollbackException e){
-
-            throw null;
+            throw e;
         } finally{
             desconectar();
         }

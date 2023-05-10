@@ -171,7 +171,7 @@ public class Libro {
         String formatoTitulo = titulo==null ? String.format("%31.31s","-")+"|" :String.format("%31.31s",titulo)+"|";
         String formatoEjemplares = ejemplares==null ? String.format("%12.12s","-")+"|" : String.format("%12.12s",ejemplares.toString())+"|";
         String formatoEjemplaresPrestados = ejemplaresPrestados==null ? String.format("%24.24s","-")+"|" : String.format("%24.24s", ejemplaresPrestados.toString())+"|";
-        String formatoEjemplaresRestantes = ejemplaresRestantes==null ? String.format("%22.22s","-")+"|" : String.format("%22.22s",anio.toString() )+"|";
+        String formatoEjemplaresRestantes = ejemplaresRestantes==null ? String.format("%22.22s","-")+"|" : String.format("%22.22s",ejemplaresRestantes.toString() )+"|";
         return "|"+formatoId + formatoTitulo + formatoIsbn + formatoEjemplares + formatoEjemplaresPrestados + formatoEjemplaresRestantes;
         
     }

@@ -4,6 +4,7 @@
  */
 package Entidades;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +18,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "editorial")
-public class Editorial {
+public class Editorial implements Serializable {
     //Atributos
     @Id
     @Column(name = "ideditorial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name="nombre")
+    @Column(unique = true, name="nombre")
     private String nombre;
     @Column(name= "alta")    
     private Boolean alta;

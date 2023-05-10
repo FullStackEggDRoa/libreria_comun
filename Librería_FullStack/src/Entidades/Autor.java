@@ -23,9 +23,8 @@ public class Autor {
     @Id
     @Column(name = "idautor")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(nullable = false,unique = true)
     private Integer id;
-    @Column(name = "nombre",unique = true)
+    @Column(unique = true, name = "nombre")
     private String nombre;
     @Column(name= "alta")    
     private Boolean alta;

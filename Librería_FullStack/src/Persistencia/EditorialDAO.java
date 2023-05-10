@@ -10,11 +10,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import javax.persistence.RollbackException;
+
 /**
  *
  * @author droa
  */
-public class EditorialDAO {
+public class EditorialDAO{
     //Atributos
     private final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("LibreriaDB_PU");
     private EntityManager em = EMF.createEntityManager();
@@ -37,12 +39,20 @@ public class EditorialDAO {
         desconectar();
         return editoriales;
     }
-    
-    public void guardarEditorial(Editorial editorial){
-        conectar();
-        em.getTransaction().begin();
-        em.persist(editorial);
-        em.getTransaction().commit();
-        desconectar();
+   
+    public void guardarEditorial(Editorial editorial) throws Exception{
+        try {
+            conectar();
+            em.getTransaction().begin();
+            em.persist(editorial);
+            em.getTransaction().commit();
+            
+        }catch (RollbackException e){
+
+            throw null;
+        } finally{
+            desconectar();
+        }
+        
     }
 }

@@ -116,6 +116,35 @@ public class serviciosLibro {
         
     }
     
+    public void editarInventarioLibro(int codigoLibro){
+        Libro libro = new Libro();
+        System.out.println(".:: Editar Inventario ::..");
+        try {
+            List<Libro> nombreLibros = new ArrayList<>();
+            
+//            System.out.print("Ingrese el Codigo de Libro: ");
+//            codigoLibro = leer.nextInt();
+            
+            nombreLibros=DAO.listarLibros("SELECT l FROM Libro l WHERE l.id="+codigoLibro);
+            
+            for(Libro auxLibro : nombreLibros){
+                System.out.print("Editar Ejemplares ["+ (auxLibro.getEjemplares()==null ? "No Asigando":auxLibro.getEjemplares()) +"]: ");
+                auxLibro.setEjemplares(leer.nextInt());
+                if(auxLibro.getEjemplaresPrestados()!=null){
+                auxLibro.setEjemplaresRestantes(auxLibro.getEjemplares()-auxLibro.getEjemplaresPrestados());
+                }
+                System.out.print("Editar Ejemplares Prestados["+ (auxLibro.getEjemplaresPrestados()==null ? "No Asigando":auxLibro.getEjemplaresPrestados())+"]: ");
+                auxLibro.setEjemplaresPrestados(leer.nextInt());
+                auxLibro.setEjemplaresRestantes(auxLibro.getEjemplares()-auxLibro.getEjemplaresPrestados());
+                DAO.editarLibro(auxLibro);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
     public void editarLibro(){
         
         Libro libro = new Libro();

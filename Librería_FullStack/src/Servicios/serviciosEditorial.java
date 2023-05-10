@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.RollbackException;
+
 /**
  *
  * @author droa
@@ -28,15 +30,24 @@ public class serviciosEditorial {
         Editorial editorial = new Editorial();
         System.out.println(".:: INGRESO EDITORIAL ::..");
         System.out.print("Ingrese Nombre de la Editorial: ");
-        String nombreEditorial = leer.next();
-        editorial.setNombre(nombreEditorial);
-        DAO.guardarEditorial(editorial);
+        String nombreEditorial = leer.next();       
+        editorial.setNombre(nombreEditorial);        
+        try {
+            DAO.guardarEditorial(editorial);
+        } catch (Exception e) {
+            //return null;
+            System.out.println("Eureka!!!!!!!!!!!!!!!");
+            System.out.println("Editorial ya se encuentra Ingresada.");
+        }
+
+        
     }
     
     public Editorial buscarEditorial(){
         List<Editorial> editoriales = new ArrayList<>();
         int contadorResultados = 1;
         int opcion=0;
+        int idEditorial=0;
         String comanda = "";
         
         System.out.println(".:: BUSCAR EDITORIAL ::..");
